@@ -75,7 +75,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(255, 107, 107, 0.9);
+            background: rgba(218, 0, 163, 0.9);
             color: white;
             border: none;
             padding: 15px 20px;
@@ -89,7 +89,7 @@
 
         .music-control:hover {
             transform: scale(1.1);
-            background: rgba(238, 90, 36, 0.9);
+            background: rgba(255, 20, 147, 0.9);
         }
 
         /* PORTADA */
@@ -584,10 +584,11 @@
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <!-- Control de música -->
-    <button class="music-control" id="musicControl" onclick="toggleMusic()">🎵</button>
+    <button class="music-control" id="musicControl" onclick="toggleMusic()">🔇</button>
 
     <div class="book-container">
         <div class="book-cover" id="bookCover" onclick="openBook()">
+            <div style="font-size: 3em; margin: 10px 0;">💀</div>
             <div class="sparkle" style="top: 10%; left: 10%; animation-delay: 0s;">✨</div>
             <div class="sparkle" style="top: 15%; right: 15%; animation-delay: 0.5s;">⭐</div>
             <div class="sparkle" style="bottom: 20%; left: 20%; animation-delay: 1s;">💫</div>
@@ -596,6 +597,7 @@
             <p>UN POCO DE NOSOTROS</p>
             <p style="font-size: 1.8em; font-weight: bold; margin-top: 20px;">¡FELIZ CUMPLEAÑOS MI NIÑA!</p>
             <p style="margin-top: 10px;">Un regalo hecho con todo mi corazón</p>
+            <div style="font-size: 2em; margin-top: 10px;">🦇</div>
             <p class="open-hint">👆 Haz clic para abrir tu regalo</p>
         </div>
 
@@ -1160,4 +1162,5 @@
         });
     </script>
 </body>
+
 
