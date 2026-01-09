@@ -1077,9 +1077,12 @@
     </div>
 
     <script>
-        let currentPage = 1;
+       let currentPage = 1;
         const totalPages = 11;
+
+        const music = document.getElementById('bgMusic');
         let musicPlaying = false;
+
 
         // Crear corazones flotantes
         function createFloatingHearts() {
@@ -1100,18 +1103,41 @@
         }
 
         function toggleMusic() {
-            const btn = document.getElementById('musicControl');
-            musicPlaying = !musicPlaying;
-            btn.innerHTML = musicPlaying ? '🎵' : '🔇';
-        }
+    const btn = document.getElementById('musicControl');
+
+    if (!musicPlaying) {
+        music.volume = 0.5;
+        music.play().then(() => {
+            musicPlaying = true;
+            btn.innerHTML = '🎵';
+        }).catch(err => {
+            console.log("Audio bloqueado:", err);
+        });
+    } else {
+        music.pause();
+        musicPlaying = false;
+        btn.innerHTML = '🔇';
+    }
+}
+
 
         function openBook() {
-            document.getElementById('bookCover').classList.add('opened');
-            setTimeout(() => {
-                document.getElementById('bookContent').classList.add('active');
-                createFloatingHearts();
-            }, 400);
-        }
+    document.getElementById('bookCover').classList.add('opened');
+
+    if (!musicPlaying) {
+        music.volume = 0.5;
+        music.play().then(() => {
+            musicPlaying = true;
+            document.getElementById('musicControl').innerHTML = '🎵';
+        }).catch(() => {});
+    }
+
+    setTimeout(() => {
+        document.getElementById('bookContent').classList.add('active');
+        createFloatingHearts();
+    }, 400);
+}
+
 
         function nextPage() {
             if (currentPage < totalPages) {
@@ -1162,5 +1188,6 @@
         });
     </script>
 </body>
+
 
 
