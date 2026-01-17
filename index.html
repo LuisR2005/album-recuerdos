@@ -921,8 +921,29 @@
                     <p class="date">Cada segundo cuenta</p>
                 </div>
                 <div class="days-counter">
-                    <div class="counter-number" id="daysCounter">∞</div>
-                    <div class="counter-label">Días amándote y contando...</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div style="text-align: center;">
+                            <div class="counter-number" style="font-size: 2.5em;" id="monthsCounter">0</div>
+                            <div style="font-size: 1em; margin-top: 5px;">Meses</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div class="counter-number" style="font-size: 2.5em;" id="daysCounter">0</div>
+                            <div style="font-size: 1em; margin-top: 5px;">Días</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div class="counter-number" style="font-size: 2.5em;" id="hoursCounter">0</div>
+                            <div style="font-size: 1em; margin-top: 5px;">Horas</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div class="counter-number" style="font-size: 2.5em;" id="minutesCounter">0</div>
+                            <div style="font-size: 1em; margin-top: 5px;">Minutos</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div class="counter-number" style="font-size: 2.5em;" id="secondsCounter">0</div>
+                            <div style="font-size: 1em; margin-top: 5px;">Segundos</div>
+                        </div>
+                    </div>
+                    <div class="counter-label">Juntos desde el 19 de Agosto de 2025 💕</div>
                     <p style="margin-top: 20px; font-size: 1.1em;">
                         Desde el día que te conocí, cada momento ha sido un regalo. 
                         Y quiero seguir sumando días, meses y años a tu lado.
@@ -1186,8 +1207,48 @@
                 alert('¡TE AMO MI GORDITA HERMOSA! 💕💕💕');
             }
         });
+
+        // CONTADOR DE TIEMPO JUNTOS
+        function updateCounter() {
+            const startDate = new Date('2025-08-19T00:00:00');
+            const now = new Date();
+            
+            // Calcular la diferencia en milisegundos
+            const diff = now - startDate;
+            
+            // Calcular cada unidad
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+            
+            // Calcular meses aproximados
+            const months = Math.floor(days / 30);
+            
+            // Obtener el resto para mostrar
+            const displayMonths = months;
+            const displayDays = days % 30;
+            const displayHours = hours % 24;
+            const displayMinutes = minutes % 60;
+            const displaySeconds = seconds % 60;
+            
+            // Actualizar los elementos del DOM si existen
+            const monthsEl = document.getElementById('monthsCounter');
+            const daysEl = document.getElementById('daysCounter');
+            const hoursEl = document.getElementById('hoursCounter');
+            const minutesEl = document.getElementById('minutesCounter');
+            const secondsEl = document.getElementById('secondsCounter');
+            
+            if (monthsEl) monthsEl.textContent = displayMonths;
+            if (daysEl) daysEl.textContent = displayDays;
+            if (hoursEl) hoursEl.textContent = displayHours;
+            if (minutesEl) minutesEl.textContent = displayMinutes;
+            if (secondsEl) secondsEl.textContent = displaySeconds;
+        }
+        
+        // Actualizar el contador cada segundo
+        setInterval(updateCounter, 1000);
+        // Actualizar inmediatamente al cargar
+        updateCounter();
     </script>
 </body>
-
-
-
